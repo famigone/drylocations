@@ -75,7 +75,7 @@ export class TagHome extends Component {
             <input ref="textInputCodigo" placeholder="tag" />
           </Form.Field>
         </Form.Group>
-        <Button color="violet" type="submit" size="mini">
+        <Button color="grey" type="submit" size="mini">
           Guardar
         </Button>
       </Form>
@@ -141,7 +141,7 @@ export class TagHome extends Component {
               <Header as="h2" floated="right">
                 <Button
                   size="mini"
-                  color="violet"
+                  color="grey"
                   active={this.state.habilitarBoton}
                   onClick={() => {
                     this.setState({ modalOpen: true });

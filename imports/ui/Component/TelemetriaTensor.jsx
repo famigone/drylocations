@@ -54,7 +54,7 @@ export class TelemetriaTensor extends Component {
             />
           </Modal.Content>
           <Modal.Actions>
-            <Button color="violet" onClick={() => this.props.handleClose()}>
+            <Button color="grey" onClick={() => this.props.handleClose()}>
               Salir
             </Button>
           </Modal.Actions>

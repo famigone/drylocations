@@ -223,7 +223,7 @@ export class Prediccion extends Component {
         </Segment>
 
         <Segment textAlign="center">
-          <Button.Group labeled icon color="violet" inverted>
+          <Button.Group labeled icon color="grey" inverted>
             <Button
               icon="play"
               content="GENERAR PREDICCIÓN"

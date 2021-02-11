@@ -213,7 +213,7 @@ export class Validacion extends Component {
         </Segment>
 
         <Segment textAlign="center">
-          <Button.Group labeled icon color="violet" inverted>
+          <Button.Group labeled icon color="grey" inverted>
             <Button
               icon="play"
               content="VALIDAR MODELO"

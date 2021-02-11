@@ -32,11 +32,11 @@ export default class ModalSensor extends Component {
             <input ref="textInputDescripcion" placeholder="descripción" />
           </Form.Field>
         </Form.Group>
-        <Button color="violet" type="submit" size="mini">
+        <Button color="grey" type="submit" size="mini">
           Guardar
         </Button>
         <Button
-          color="violet"
+          color="grey"
           type="submit"
           size="mini"
           onClick={this.props.handleClose}

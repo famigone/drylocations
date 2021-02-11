@@ -187,7 +187,7 @@ export default class SensorParam extends Component {
           </Header>
         </Segment>
         <Segment textAlign="right">
-          <Button.Group color="violet">
+          <Button.Group color="grey">
             <Button
               icon="cogs"
               content="PARAMETRIZAR"

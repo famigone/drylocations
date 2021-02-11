@@ -269,7 +269,7 @@ export class Entrenamiento extends Component {
         </Segment>
         <ModalForm />
         <Segment textAlign="center">
-          <Button.Group labeled icon color="violet" inverted>
+          <Button.Group labeled icon color="grey" inverted>
             <Button
               icon="play"
               content="ENTRENAR MODELO"

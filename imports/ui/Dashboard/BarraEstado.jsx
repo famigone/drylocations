@@ -28,13 +28,10 @@ export default class BarraEstado extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu inverted color="teal">
-        <Menu.Item>
-          <Image centered src="/img/logo32white.png" />
-        </Menu.Item>
+      <Menu inverted color="orange">
         <Menu.Item>
           {/*<Image centered size="tiny" src="/img/ripioh_white.png" />*/}
-          <h3>ATAWALPA</h3>
+          <h3>DRYLOCATIONS®</h3>
         </Menu.Item>
 
         <Menu.Item as={Link} to="/tags" onClick={this.handleItemClick}>
@@ -43,7 +40,9 @@ export default class BarraEstado extends Component {
         <Menu.Item as={Link} to="/mosquitto" onClick={this.handleItemClick}>
           <Icon name="sitemap" />
         </Menu.Item>
-
+        <Menu.Item as={Link} to="/" onClick={this.handleItemClick}>
+          <Icon name="truck" />
+        </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item
             name="consultasadmin"

@@ -22,16 +22,14 @@ export default class Footer extends Component {
         <Segment
           inverted
           vertical
-          color="teal"
+          color="orange"
           style={{
             position: "fixed",
             width: "100%",
             bottom: "0"
           }}
         >
-          <Container textAlign="center">
-            {<Image centered src="/img/logo16white.png" />}
-          </Container>
+          <Container textAlign="center">DRYLOCATIONS®</Container>
         </Segment>
       </div>
     );

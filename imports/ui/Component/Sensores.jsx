@@ -58,7 +58,7 @@ class Sensores extends Component {
           <Button
             onClick={() => this.openModalWithSensor(sensor)}
             basic
-            color="violet"
+            color="grey"
             content=<center>
               <Icon name="angle left" />
             </center>
@@ -68,7 +68,7 @@ class Sensores extends Component {
             as={Link}
             to={`/sensorhome/${sensor.codigo}/${sensor.tag()}`}
             basic
-            color="violet"
+            color="grey"
             content=<center>
               <Icon name="angle right" />
             </center>
