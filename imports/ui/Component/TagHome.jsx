@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import ModalSensor from "./modalSensor.jsx";
 import Sensores from "./Sensores.jsx";
+import EventHome from "./events/EventHome.jsx";
 import LoaderExampleText from "./LoaderExampleText.js";
 import {
   BrowserRouter as Router,
@@ -52,9 +53,12 @@ export class TagHome extends Component {
     const textCodigo = ReactDOM.findDOMNode(
       this.refs.textInputCodigo
     ).value.trim();
-
+    const textDescripcion = ReactDOM.findDOMNode(
+      this.refs.textInputDescripcion
+    ).value.trim();
     const one = {
-      tag: textCodigo
+      tag: textCodigo,
+      descripcion: textDescripcion
     };
     // Call the Method
     //insertLocacion.validate(one);
@@ -72,7 +76,10 @@ export class TagHome extends Component {
       <Form onSubmit={this.handleSubmit.bind(this)}>
         <Form.Group widths="equal">
           <Form.Field>
-            <input ref="textInputCodigo" placeholder="tag" />
+            <input ref="textInputCodigo" placeholder="identificador" />
+          </Form.Field>
+          <Form.Field>
+            <input ref="textInputDescripcion" placeholder="Dominio" />
           </Form.Field>
         </Form.Group>
         <Button color="grey" type="submit" size="mini">
@@ -101,6 +108,7 @@ export class TagHome extends Component {
     return this.props.tags.map(tag => (
       <Table.Row key={tag._id} onClick={() => this.clickFila(tag._id, tag.tag)}>
         <Table.Cell collapsing>{tag.tag}</Table.Cell>
+        <Table.Cell collapsing>{tag.descripcion}</Table.Cell>
       </Table.Row>
     ));
   }
@@ -123,49 +131,28 @@ export class TagHome extends Component {
     }
 
     return (
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={1} />
-          <Grid.Column width={3}>
-            <Segment raised>
-              <Header dividing>Nuevo Tag</Header>
-              {this.renderForm()}
-            </Segment>
-            <Segment raised>
-              <Header dividing>Tags Activos</Header>
-              {this.renderTags()}
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={11}>
-            <Segment raised>
-              <Header as="h2" floated="right">
-                <Button
-                  size="mini"
-                  color="grey"
-                  active={this.state.habilitarBoton}
-                  onClick={() => {
-                    this.setState({ modalOpen: true });
-                  }}
-                >
-                  NUEVO
-                </Button>
-              </Header>
-              <Header as="h2" dividing>
-                <Icon name="podcast" />
-                <Header.Content>
-                  {this.state.tag}
-                  <Header.Subheader>Sensores asociados al tag</Header.Subheader>
-                </Header.Content>
-              </Header>
-            </Segment>
-            <Segment raised>
-              <Sensores tagId={this.state.tagId} tag={this.state.tag} />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={1} />
-        </Grid.Row>
-        {this.renderModal()}
-      </Grid>
+      <div>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={1} />
+            <Grid.Column width={6}>
+              <Segment raised>
+                <Header dividing>Nuevo GPS</Header>
+                {this.renderForm()}
+              </Segment>
+              <Segment raised> {this.renderTags()}</Segment>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Segment raised>
+                <EventHome topico={this.state.tag} />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={1} />
+          </Grid.Row>
+          {this.renderModal()}
+        </Grid>
+        <Segment />
+      </div>
     );
   }
 }

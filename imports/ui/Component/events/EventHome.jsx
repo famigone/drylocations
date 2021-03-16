@@ -50,8 +50,8 @@ class EventHome extends Component {
       <Header as="h2">
         <Icon name="wifi" />
         <Header.Content>
-          Eventos
-          <Header.Subheader>Nivel</Header.Subheader>
+          {this.props.topico}
+          <Header.Subheader>últimas coordenadas</Header.Subheader>
         </Header.Content>
       </Header>
     );
@@ -61,8 +61,7 @@ class EventHome extends Component {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Sensor</Table.HeaderCell>
-            <Table.HeaderCell>Nivel</Table.HeaderCell>
+            <Table.HeaderCell>Coordenada</Table.HeaderCell>
             <Table.HeaderCell>Timestamp</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -79,8 +78,6 @@ class EventHome extends Component {
       <Grid textAlign="left">
         <Grid.Row>
           <Grid.Column width={16}>
-            <div>{this.getContentView()}</div>
-
             <Segment raised>
               {this.renderHeader()}
 
@@ -94,11 +91,12 @@ class EventHome extends Component {
     );
   }
 }
-export default withTracker(() => {
-  const subEvent = Meteor.subscribe("events");
+export default withTracker(({ topico }) => {
+  //console.log("topicazo: ", topico.topico);
+  const subEvent = Meteor.subscribe("eventsOne", topico);
   let isLoading = !subEvent.ready();
   return {
-    events: Events.find({}).fetch(),
+    events: Events.find().fetch(),
     isLoading: isLoading
   };
 })(EventHome);

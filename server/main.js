@@ -8,14 +8,16 @@ import "/api/methods.js";
 //import { Ruteador } from "/imports/startup/client/routes.js";
 
 Meteor.startup(() => {
-  //  render(Ruteador(), document.getElementById("app"));
-  let server = Meteor.settings.mqttHost;
+  //let server = Meteor.settings.mqttHost;
+  let server = "mqtt://66.97.38.132";
   //Events.mqttConnect(server, ["nivel/+"], { insert: true });
   listaTag = Tags.find({ activo: true }).fetch();
   const arrayTags = new Array();
   var i = 0;
+
   Tags.find({ activo: true }).forEach(unTag => {
-    arrayTags.push(unTag.tag + "/+");
+    //arrayTags.push(unTag.tag + "/+");
+    arrayTags.push(unTag.tag);
   });
   console.log(arrayTags);
   Events.mqttConnect(server, arrayTags, { insert: true });

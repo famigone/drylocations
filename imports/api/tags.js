@@ -6,6 +6,7 @@ export default (Tags = new Mongo.Collection("tags"));
 
 Tags.schema = new SimpleSchema({
   tag: { type: String },
+  descripcion: { type: String },
   activo: {
     type: Boolean,
     optional: true,

@@ -24,6 +24,7 @@ export const insertTag = new ValidatedMethod({
   name: "tags.insert",
   validate: new SimpleSchema({
     tag: { type: String },
+    descripcion: { type: String },
     activo: {
       type: Boolean,
       optional: true,

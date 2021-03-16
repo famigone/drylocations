@@ -48,7 +48,7 @@ export default class App extends Component {
       //#FBFCFC
       //#F7F9F9
       <div
-        style={{ backgroundColor: "#F4F6F6", width: "100%", height: "100%" }}
+        style={{ backgroundColor: "#FBF8F6", width: "100%", height: "100%" }}
       >
         <BarraEstado />
         {this.getContentView()}

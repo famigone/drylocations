@@ -28,7 +28,7 @@ export default class BarraEstado extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu inverted color="orange">
+      <Menu inverted color="green">
         <Menu.Item>
           {/*<Image centered size="tiny" src="/img/ripioh_white.png" />*/}
           <h3>DRYLOCATIONS®</h3>
