@@ -8,8 +8,8 @@ import "/api/methods.js";
 //import { Ruteador } from "/imports/startup/client/routes.js";
 
 Meteor.startup(() => {
-  //let server = Meteor.settings.mqttHost;
-  let server = "mqtt://66.97.38.132";
+  let server = Meteor.settings.mqttHost;
+  //let server = "mqtt://66.97.38.132";
   //Events.mqttConnect(server, ["nivel/+"], { insert: true });
   listaTag = Tags.find({ activo: true }).fetch();
   const arrayTags = new Array();
