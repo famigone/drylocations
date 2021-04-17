@@ -27,6 +27,17 @@ Meteor.publish("events", function() {
   return Events.find();
   //return Events.find();
 });
+
+Meteor.publish("eventsLimited", function(sensorname) {
+  const options = {
+    sort: { createdAt: -1 },
+    limit: 1
+  };
+
+  return Events.find({ topic: sensorname }, options);
+  //return Events.find();
+});
+
 Meteor.publish("eventsOne", function(sensorname) {
   return Events.find({ topic: sensorname });
   //return Events.find();

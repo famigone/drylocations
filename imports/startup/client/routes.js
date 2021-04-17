@@ -31,21 +31,20 @@ export const Ruteador = () => (
   <Router history={browserHistory}>
     <Switch>
       <Route exact path="/login" component={LoginForm} />
-      <PrivateRoute>
-        <App>
-          <Route exact path="/tags">
-            <TagHome />
-          </Route>
-          <Route exact path="/mosquitto" component={EventHome} />
 
-          <Route
-            exact
-            path="/sensorhome/:codigo/:tag"
-            children={<ChildSensor />}
-          />
-        </App>
-      </PrivateRoute>
-      {requireAuth ? <Redirect to="/login" /> : <App />}
+      <App>
+        <Route exact path="/tags">
+          <TagHome />
+        </Route>
+        <Route exact path="/mosquitto" component={EventHome} />
+
+        <Route
+          exact
+          path="/sensorhome/:codigo/:tag"
+          children={<ChildSensor />}
+        />
+      </App>
+
       <Route exact path="/login" component={LoginForm} />
     </Switch>
   </Router>

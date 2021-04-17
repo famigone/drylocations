@@ -93,7 +93,7 @@ class EventHome extends Component {
 }
 export default withTracker(({ topico }) => {
   //console.log("topicazo: ", topico.topico);
-  const subEvent = Meteor.subscribe("eventsOne", topico);
+  const subEvent = Meteor.subscribe("eventsLimited", topico);
   let isLoading = !subEvent.ready();
   return {
     events: Events.find().fetch(),

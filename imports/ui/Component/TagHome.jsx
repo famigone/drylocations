@@ -7,6 +7,7 @@ import { withTracker } from "meteor/react-meteor-data";
 import ModalSensor from "./modalSensor.jsx";
 import Sensores from "./Sensores.jsx";
 import EventHome from "./events/EventHome.jsx";
+import MyMap from "./maps/MyMap.js";
 import LoaderExampleText from "./LoaderExampleText.js";
 import {
   BrowserRouter as Router,
@@ -42,6 +43,7 @@ export class TagHome extends Component {
   state = {
     tag: "",
     tagId: "",
+    descripcion: "",
     habilitarBoton: false,
     modalOpen: false
   };
@@ -100,13 +102,21 @@ export class TagHome extends Component {
       </Table>
     );
   }
-  clickFila(id, tag) {
-    this.setState({ tag: tag, tagId: id, habilitarBoton: true });
+  clickFila(id, tag, descripcion) {
+    this.setState({
+      tag: tag,
+      tagId: id,
+      descripcion: descripcion,
+      habilitarBoton: true
+    });
   }
 
   renderFila() {
     return this.props.tags.map(tag => (
-      <Table.Row key={tag._id} onClick={() => this.clickFila(tag._id, tag.tag)}>
+      <Table.Row
+        key={tag._id}
+        onClick={() => this.clickFila(tag._id, tag.tag, tag.descripcion)}
+      >
         <Table.Cell collapsing>{tag.tag}</Table.Cell>
         <Table.Cell collapsing>{tag.descripcion}</Table.Cell>
       </Table.Row>
@@ -135,15 +145,19 @@ export class TagHome extends Component {
         <Grid>
           <Grid.Row>
             <Grid.Column width={1} />
-            <Grid.Column width={6}>
+            <Grid.Column width={3}>
               <Segment raised>
                 <Header dividing>Nuevo GPS</Header>
                 {this.renderForm()}
               </Segment>
               <Segment raised> {this.renderTags()}</Segment>
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column width={11}>
               <Segment raised>
+                <MyMap
+                  tag={this.state.tag}
+                  descripcion={this.state.descripcion}
+                />
                 <EventHome topico={this.state.tag} />
               </Segment>
             </Grid.Column>
