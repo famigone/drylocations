@@ -81,8 +81,8 @@ class MyMap extends Component {
             defaultZoom={this.props.zoom}
           >
             <AnyReactComponent
-              lat={-38.926905}
-              lng={-67.997166}
+              lat={this.props.lat}
+              lng={this.props.lon}
               text={this.props.tag}
             />
           </GoogleMapReact>
@@ -96,8 +96,22 @@ export default withTracker(({ tag, descripcion }) => {
   //console.log("topicazo: ", topico.topico);
   const subEvent = Meteor.subscribe("eventsLimited", tag);
   let isLoading = !subEvent.ready();
+  var lat = -38.92;
+  var lon = -67.99;
+  var i = 0;
+  if (!isLoading && tag) {
+    var cadena = Events.findOne().message;
+    posLon = cadena.indexOf("*");
+    lat = Number(cadena.substr(0, posLon));
+    lon = Number(cadena.substr(posLon + 1));
+    //  console.log("lat: ", lat);
+    //  console.log("lon: ", lon);
+    //-38.926786*-67.997257
+  }
   return {
     latido: Events.findOne(),
-    isLoading: isLoading
+    isLoading: isLoading,
+    lat: lat,
+    lon: lon
   };
 })(MyMap);
