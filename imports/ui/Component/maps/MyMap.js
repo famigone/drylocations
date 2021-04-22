@@ -57,7 +57,7 @@ class MyMap extends Component {
             <Header.Subheader>
               Último latido:{" "}
               {this.props.latido
-                ? moment(this.props.latido.createdAt).format(
+                ? moment(Date(this.props.latido.createdAt).toString()).format(
                     "DD-MM-YYYY, h:mm:ss a"
                   )
                 : "Seleccionar Batea"}
@@ -101,6 +101,7 @@ export default withTracker(({ tag, descripcion }) => {
   var i = 0;
   if (!isLoading && tag) {
     var cadena = Events.findOne().message;
+    //console.log("Entregó: ", Events.findOne().createdAt);
     posLon = cadena.indexOf("*");
     lat = Number(cadena.substr(0, posLon));
     lon = Number(cadena.substr(posLon + 1));
