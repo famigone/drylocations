@@ -57,7 +57,7 @@ class MyMap extends Component {
             <Header.Subheader>
               Último latido:{" "}
               {this.props.latido
-                ? moment(Date(this.props.latido.createdAt).toString()).format(
+                ? moment(this.props.latido.createdAt).format(
                     "DD-MM-YYYY, h:mm:ss a"
                   )
                 : "Seleccionar Batea"}

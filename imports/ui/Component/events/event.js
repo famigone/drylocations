@@ -7,7 +7,9 @@ export default class Event extends Component {
     return (
       <Table.Row>
         <Table.Cell>{this.props.event.message}</Table.Cell>
-        <Table.Cell>{Date(this.props.event.createdAt).toString()}</Table.Cell>
+        <Table.Cell>
+          {moment(this.props.event.createdAt).format("DD-MM-YYYY, h:mm:ss a")}
+        </Table.Cell>
       </Table.Row>
     );
   }
